@@ -1,0 +1,90 @@
+.pageNumbers {
+  list-style: none;
+  display: flex;
+  height: 2 rem !important;
+  text-align: center;
+  justify-content: center;
+  margin-top: 2.5 rem;
+}
+
+.pageNumbers li {
+  padding: 10px;
+  border: 1px solid #79e0fc;
+  cursor: pointer;
+  /* max-height: 20px; */
+}
+
+.pageNumbers li.active {
+  background-color: #44ccf1;
+  color: black;
+}
+
+.pageNumbers li button {
+  background-color: transparent;
+  border: none;
+  color: #048d65;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.pageNumbers li button:hover {
+  background-color: #79e0fc;
+  color: black;
+}
+.pageNumbers li button:focus {
+  outline: none;
+}
+
+.pageNumbers1 {
+  list-style: none;
+  display: flex;
+  height: 2 rem !important;
+  text-align: center;
+  justify-content: center;
+  margin-top: 2.5 rem;
+}
+
+.pageNumbers1 li {
+  padding: 10px;
+  border: 1px solid #79e0fc;
+  cursor: pointer;
+  /* max-height: 20px; */
+}
+
+.pageNumbers1 li.active {
+  background-color: #44ccf1;
+  color: black;
+}
+
+.pageNumbers1 li button {
+  background-color: transparent;
+  border: none;
+  color: #048d65;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.pageNumbers1 li button:hover {
+  background-color: #79e0fc;
+  color: black;
+}
+.pageNumbers1 li button:focus {
+  outline: none;
+}
+
+.modalbody {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.modalul {
+  list-style: none;
+}
+.modalli {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(200, 200, 200);
+  margin-bottom: 15px;
+}
+
+.modalmainheading {
+  color: green;
+}

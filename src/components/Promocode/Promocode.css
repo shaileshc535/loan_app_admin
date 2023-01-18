@@ -1,0 +1,18 @@
+.docsCard {
+  height: 12rem;
+}
+
+.docsCardImage {
+  height: 100%;
+  width: 100%;
+}
+
+.formImageCard {
+  height: 10rem;
+  width: 100%;
+  align-items: center;
+}
+.formImageimg {
+  width: 50%;
+  height: 100%;
+}
