@@ -21,14 +21,19 @@ function App() {
     localStorage.token !== ""
   ) {
     setAuthorizationToken(localStorage.token);
-    jwt.verify(localStorage.token, "123", function (err, decode) {
-      if (err) {
-        store.dispatch(signOut());
-      } else {
-        store.dispatch(setCurrentUser(decode));
+    jwt.verify(
+      localStorage.token,
+      process.env.REACT_APP_JWT_SECRET,
+      function (err, decode) {
+        if (err) {
+          store.dispatch(signOut());
+        } else {
+          store.dispatch(setCurrentUser(decode));
+        }
       }
-    });
+    );
   }
+
   return (
     <div>
       <Provider store={store}>

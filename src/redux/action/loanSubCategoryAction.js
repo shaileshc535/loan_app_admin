@@ -1,31 +1,31 @@
 import { toast } from "react-toastify";
 import axios from "axios";
 import {
-  ADD_LOAN_CATEGORY_FAIL,
-  ADD_LOAN_CATEGORY_REQUEST,
-  ADD_LOAN_CATEGORY_SUCCESS,
-  DELETE_LOAN_CATEGORY_FAIL,
-  DELETE_LOAN_CATEGORY_REQUEST,
-  DELETE_LOAN_CATEGORY_SUCCESS,
-  CHANGE_STATUS_LOAN_CATEGORY_FAIL,
-  CHANGE_STATUS_LOAN_CATEGORY_REQUEST,
-  CHANGE_STATUS_LOAN_CATEGORY_SUCCESS,
-  FIND_ALL_LOAN_CATEGORY_FAIL,
-  FIND_ALL_LOAN_CATEGORY_REQUEST,
-  FIND_ALL_LOAN_CATEGORY_SUCCESS,
-  FIND_ONE_LOAN_CATEGORY_FAIL,
-  FIND_ONE_LOAN_CATEGORY_REQUEST,
-  FIND_ONE_LOAN_CATEGORY_SUCCESS,
-  UPDATE_LOAN_CATEGORY_FAIL,
-  UPDATE_LOAN_CATEGORY_REQUEST,
-  UPDATE_LOAN_CATEGORY_SUCCESS,
-} from "../constant/loanCategoryConstant";
+  ADD_LOAN_SUB_CATEGORY_FAIL,
+  ADD_LOAN_SUB_CATEGORY_REQUEST,
+  ADD_LOAN_SUB_CATEGORY_SUCCESS,
+  DELETE_LOAN_SUB_CATEGORY_FAIL,
+  DELETE_LOAN_SUB_CATEGORY_REQUEST,
+  DELETE_LOAN_SUB_CATEGORY_SUCCESS,
+  CHANGE_STATUS_LOAN_SUB_CATEGORY_FAIL,
+  CHANGE_STATUS_LOAN_SUB_CATEGORY_REQUEST,
+  CHANGE_STATUS_LOAN_SUB_CATEGORY_SUCCESS,
+  FIND_ALL_LOAN_SUB_CATEGORY_FAIL,
+  FIND_ALL_LOAN_SUB_CATEGORY_REQUEST,
+  FIND_ALL_LOAN_SUB_CATEGORY_SUCCESS,
+  FIND_ONE_LOAN_SUB_CATEGORY_FAIL,
+  FIND_ONE_LOAN_SUB_CATEGORY_REQUEST,
+  FIND_ONE_LOAN_SUB_CATEGORY_SUCCESS,
+  UPDATE_LOAN_SUB_CATEGORY_FAIL,
+  UPDATE_LOAN_SUB_CATEGORY_REQUEST,
+  UPDATE_LOAN_SUB_CATEGORY_SUCCESS,
+} from "../constant/loanSubCategoryConstant";
 
-// Find All Loan Categories
-const loadAllLoanCategories = (data) => {
+// Find All Loan Sub Categories
+const loadAllLoanSubCategories = (data) => {
   return function (dispatch) {
     dispatch({
-      type: FIND_ALL_LOAN_CATEGORY_REQUEST,
+      type: FIND_ALL_LOAN_SUB_CATEGORY_REQUEST,
       payload: true,
     });
 
@@ -34,7 +34,7 @@ const loadAllLoanCategories = (data) => {
       : "";
 
     let OPTION = {
-      url: `${process.env.REACT_APP_API_URL}/loan-category/admin/loan-category`,
+      url: `${process.env.REACT_APP_API_URL}/loan-subcategory/admin/loan-subcategory`,
       method: "POST",
       data: data,
       headers: {
@@ -45,11 +45,11 @@ const loadAllLoanCategories = (data) => {
 
     axios(OPTION)
       .then((res) => {
-        dispatch(loadAllLoanCategoriesPre(res.data));
+        dispatch(loadAllLoanSubCategoriesPre(res.data));
       })
       .catch((error) => {
         dispatch({
-          type: FIND_ALL_LOAN_CATEGORY_FAIL,
+          type: FIND_ALL_LOAN_SUB_CATEGORY_FAIL,
           payload: false,
           error: error,
           msg: "Failed to load the information",
@@ -57,21 +57,21 @@ const loadAllLoanCategories = (data) => {
       });
   };
 };
-export const loadAllLoanCategoriesPre = (data) => {
+export const loadAllLoanSubCategoriesPre = (data) => {
   console.log("data", data);
   return {
-    type: FIND_ALL_LOAN_CATEGORY_SUCCESS,
+    type: FIND_ALL_LOAN_SUB_CATEGORY_SUCCESS,
     result: data,
     payload: false,
     msg: "SUCCESS",
   };
 };
 
-// Find Single Loan Category
-const loadSingleLoanCategory = (id) => {
+// Find Single Loan Sub Category
+const loadSingleLoanSubCategory = (id) => {
   return function (dispatch) {
     dispatch({
-      type: FIND_ONE_LOAN_CATEGORY_REQUEST,
+      type: FIND_ONE_LOAN_SUB_CATEGORY_REQUEST,
       payload: true,
     });
     const token = JSON.parse(localStorage.getItem("jwt"))
@@ -92,7 +92,7 @@ const loadSingleLoanCategory = (id) => {
       })
       .catch((error) => {
         dispatch({
-          type: FIND_ONE_LOAN_CATEGORY_FAIL,
+          type: FIND_ONE_LOAN_SUB_CATEGORY_FAIL,
           payload: false,
           error: error,
           msg: "Failed to load the information",
@@ -102,18 +102,18 @@ const loadSingleLoanCategory = (id) => {
 };
 export const loadSingleLoanCategoryPre = (data) => {
   return {
-    type: FIND_ONE_LOAN_CATEGORY_SUCCESS,
+    type: FIND_ONE_LOAN_SUB_CATEGORY_SUCCESS,
     singledata: data,
     payload: false,
     msg: "SUCCESS",
   };
 };
 
-// add New Loan Category
+// add New Loan Sub Category
 const createLoanCategory = (data) => {
   return function (dispatch) {
     dispatch({
-      type: ADD_LOAN_CATEGORY_REQUEST,
+      type: ADD_LOAN_SUB_CATEGORY_REQUEST,
       payload: true,
     });
 
@@ -130,11 +130,11 @@ const createLoanCategory = (data) => {
     axios(OPTION)
       .then((res) => {
         dispatch(createLoanCategoryPre(res.data));
-        dispatch(loadAllLoanCategories());
+        dispatch(loadAllLoanSubCategories());
       })
       .catch((error) => {
         dispatch({
-          type: ADD_LOAN_CATEGORY_FAIL,
+          type: ADD_LOAN_SUB_CATEGORY_FAIL,
           payload: false,
           error: error,
           msg: "Failed to load the information",
@@ -143,20 +143,20 @@ const createLoanCategory = (data) => {
   };
 };
 export const createLoanCategoryPre = (data) => {
-  toast.success("Loan Category Created Successfully!");
+  toast.success("Loan Sub Category Created Successfully!");
   return {
-    type: ADD_LOAN_CATEGORY_SUCCESS,
+    type: ADD_LOAN_SUB_CATEGORY_SUCCESS,
     result: data,
     payload: false,
     msg: "SUCCESS",
   };
 };
 
-// update Loan CATEGORY
+// update Loan Sub CatEGORY
 const updateLoanCategory = (data) => {
   return function (dispatch) {
     dispatch({
-      type: UPDATE_LOAN_CATEGORY_REQUEST,
+      type: UPDATE_LOAN_SUB_CATEGORY_REQUEST,
       payload: true,
     });
 
@@ -173,11 +173,11 @@ const updateLoanCategory = (data) => {
     axios(OPTION)
       .then((res) => {
         dispatch(updateLoanCategoryPre(res.data));
-        dispatch(loadAllLoanCategories());
+        dispatch(loadAllLoanSubCategories());
       })
       .catch((error) => {
         dispatch({
-          type: UPDATE_LOAN_CATEGORY_FAIL,
+          type: UPDATE_LOAN_SUB_CATEGORY_FAIL,
           payload: false,
           error: error,
           msg: "Failed to load the information",
@@ -186,20 +186,20 @@ const updateLoanCategory = (data) => {
   };
 };
 export const updateLoanCategoryPre = (data) => {
-  toast.success("Loan Category Updated Successfully!");
+  toast.success("Loan Sub Category Updated Successfully!");
   return {
-    type: UPDATE_LOAN_CATEGORY_SUCCESS,
+    type: UPDATE_LOAN_SUB_CATEGORY_SUCCESS,
     result: data,
     payload: false,
     msg: "SUCCESS",
   };
 };
 
-// Loan Category Status Change Delete
+// Loan Sub Category Status Change Delete
 const deleteLoanCategory = (data) => {
   return function (dispatch) {
     dispatch({
-      type: DELETE_LOAN_CATEGORY_REQUEST,
+      type: DELETE_LOAN_SUB_CATEGORY_REQUEST,
       payload: "",
     });
 
@@ -215,11 +215,11 @@ const deleteLoanCategory = (data) => {
     axios(OPTION)
       .then((res) => {
         dispatch(deleteLoanCategoryPre(res.data));
-        dispatch(loadAllLoanCategories());
+        dispatch(loadAllLoanSubCategories());
       })
       .catch((error) => {
         dispatch({
-          type: DELETE_LOAN_CATEGORY_FAIL,
+          type: DELETE_LOAN_SUB_CATEGORY_FAIL,
           payload: false,
           error: error,
           msg: "Failed to load the information",
@@ -228,20 +228,20 @@ const deleteLoanCategory = (data) => {
   };
 };
 export const deleteLoanCategoryPre = (data) => {
-  toast.error("Loan Category Deleted Successfully!");
+  toast.error("Loan Sub Category Deleted Successfully!");
   return {
-    type: DELETE_LOAN_CATEGORY_SUCCESS,
+    type: DELETE_LOAN_SUB_CATEGORY_SUCCESS,
     result: data,
     payload: false,
     msg: "SUCCESS",
   };
 };
 
-// Loan Category Status Change
+// Loan Sub Category Status Change
 const changeStatusLoanCategory = (data) => {
   return function (dispatch) {
     dispatch({
-      type: CHANGE_STATUS_LOAN_CATEGORY_REQUEST,
+      type: CHANGE_STATUS_LOAN_SUB_CATEGORY_REQUEST,
       payload: "",
     });
 
@@ -257,11 +257,11 @@ const changeStatusLoanCategory = (data) => {
     axios(OPTION)
       .then((res) => {
         dispatch(changeStatusLoanCategoryPre(res.data));
-        dispatch(loadAllLoanCategories());
+        dispatch(loadAllLoanSubCategories());
       })
       .catch((error) => {
         dispatch({
-          type: CHANGE_STATUS_LOAN_CATEGORY_FAIL,
+          type: CHANGE_STATUS_LOAN_SUB_CATEGORY_FAIL,
           payload: false,
           error: error,
           msg: "Failed to load the information",
@@ -270,9 +270,9 @@ const changeStatusLoanCategory = (data) => {
   };
 };
 export const changeStatusLoanCategoryPre = (data) => {
-  toast.error("Loan Category Deleted Successfully!");
+  toast.error("Loan Sub Category Deleted Successfully!");
   return {
-    type: CHANGE_STATUS_LOAN_CATEGORY_SUCCESS,
+    type: CHANGE_STATUS_LOAN_SUB_CATEGORY_SUCCESS,
     result: data,
     payload: false,
     msg: "SUCCESS",
@@ -280,8 +280,8 @@ export const changeStatusLoanCategoryPre = (data) => {
 };
 
 export {
-  loadAllLoanCategories,
-  loadSingleLoanCategory,
+  loadAllLoanSubCategories,
+  loadSingleLoanSubCategory,
   createLoanCategory,
   updateLoanCategory,
   deleteLoanCategory,

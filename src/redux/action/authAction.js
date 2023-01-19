@@ -22,7 +22,7 @@ export const signinUser = (data) => {
     });
 
     let OPTIONS = {
-      url: `http://localhost:3010/user/login`,
+      url: `${process.env.REACT_APP_API_URL}/user/login`,
       method: "POST",
       data: data,
       headers: {
@@ -108,7 +108,7 @@ export const register = (name, email, password, mobile) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(
-      `http://localhost:3010/user/register`,
+      `${process.env.REACT_APP_API_URL}/user/register`,
       { name, email, password, mobile },
       config
     );
